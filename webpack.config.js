@@ -14,7 +14,9 @@ module.exports = {
   module: {
     rules: [
       { test: /\.ts$/, use: 'ts-loader', include: [path.resolve(__dirname, 'src')] },
-      { test: /\.css$/, use: ['style-loader', 'css-loader'] }    ]
+      { test: /\.css$/, use: ['style-loader', 'css-loader'] },
+      { test: /\.ttf$/, type: 'asset/resource' }
+    ]
   },
   resolve: {
     extensions: ['.ts', '.js']
