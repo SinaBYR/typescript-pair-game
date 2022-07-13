@@ -1,0 +1,47 @@
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+
+@font-face {
+  font-family: HoneyBear;
+  src: url('./assets/HoneyBear.ttf');
+}
+
+body {
+  color: #FF8C8C;
+  background-color: #FAF4B7;
+  font-family: HoneyBear;
+}
+
+.heading {
+  font-size: 7rem;
+  text-shadow: 8px 8px #bb8888;
+}
+
+.btn {
+  font-family: HoneyBear;
+  min-width: 200px;
+  color: #FAF4B7;
+  background-color: #FF8C8C;
+  font-size: 1.5rem;
+  padding: 0.5rem 0;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 6px 6px #bb8888;
+  cursor: pointer;
+}
+
+.btn:active {
+  box-shadow: 2px 2px #bb8888;
+  transform: translate(5px, 5px);
+}
+
+header {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  /* border: 1px solid red; */
+  margin-top: 250px;
+}
+
+header *:first-child {
+  margin-bottom: 2rem;
+}
