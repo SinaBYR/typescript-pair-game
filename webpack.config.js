@@ -14,15 +14,15 @@ module.exports = {
   module: {
     rules: [
       { test: /\.ts$/, use: 'ts-loader', include: [path.resolve(__dirname, 'src')] },
-      { test: /\.css$/, use: ['style-loader', 'css-loader'] }
-    ]
+      { test: /\.css$/, use: ['style-loader', 'css-loader'] }    ]
   },
   resolve: {
     extensions: ['.ts', '.js']
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'TypeScript Pair Game'
+      title: 'TypeScript Pair Game',
+      template: './src/templates/index.handlebars'
     })
   ],
   devServer: {
