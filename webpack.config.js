@@ -9,13 +9,16 @@ module.exports = {
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    clean: true
+    clean: true,
+
   },
   module: {
     rules: [
       { test: /\.ts$/, use: 'ts-loader', include: [path.resolve(__dirname, 'src')] },
       { test: /\.css$/, use: ['style-loader', 'css-loader'] },
-      { test: /\.ttf$/, type: 'asset/resource' }
+      { test: /\.ttf$/, type: 'asset/resource' },
+      // { test: /\.(png|svg|jpg|jpeg)$/i, type: 'asset/resource', generator: { filename: '[name].[ext]' } }
+      { test: /\.html$/i, loader: 'html-loader' }
     ]
   },
   resolve: {
@@ -24,7 +27,8 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'TypeScript Pair Game',
-      template: './src/templates/index.handlebars'
+      template: './src/templates/index.html',
+      publicPath: './'
     })
   ],
   devServer: {
