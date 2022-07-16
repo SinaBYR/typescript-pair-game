@@ -34,7 +34,7 @@ header {
   display: flex;
   align-items: center;
   flex-direction: column;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   margin-top: 250px;
   transition: all 500ms ease;
 }
@@ -72,6 +72,11 @@ header.playing {
 
 header.playing h1 {
   font-size: 4rem;
+}
+
+main {
+  padding: 1rem;
+  border: 1px solid blue;
 }
 
 footer {

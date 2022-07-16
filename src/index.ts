@@ -1,4 +1,10 @@
 import './styles.css';
+import { cardComponent } from './components/card';
+
+const main = document.querySelector('main')!;
+
+main.appendChild(cardComponent());
+
 
 const button = document.querySelector('[data-play-button]')!;
 
