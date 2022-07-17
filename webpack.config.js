@@ -4,21 +4,24 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   mode: 'development',
   entry: {
-    index: './src/index.ts'
+    shuffle: './src/utils/shuffle.ts',
+    index: {
+      import: './src/index.ts',
+      dependOn: 'shuffle'
+    }
   },
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    clean: true,
-
+    clean: true
   },
   module: {
     rules: [
       { test: /\.ts$/, use: 'ts-loader', include: [path.resolve(__dirname, 'src')] },
       { test: /\.css$/, use: ['style-loader', 'css-loader'] },
-      { test: /\.ttf$/, type: 'asset/resource' },
-      // { test: /\.(png|svg|jpg|jpeg)$/i, type: 'asset/resource', generator: { filename: '[name].[ext]' } }
-      { test: /\.html$/i, loader: 'html-loader' }
+      { test: /\.ttf$/, type: 'asset/resource', generator: { filename: 'assets/fonts/[name][ext]' } },
+      { test: /\.(png|svg|jpg|jpeg)$/i, type: 'asset/resource', generator: { filename: 'assets/img/[name][ext]' } },
+      { test: /\.html$/i, loader: 'html-loader', options: { minimize: true } }
     ]
   },
   resolve: {
