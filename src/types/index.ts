@@ -1,0 +1,1 @@
+export type GameCards = { no: string, src: any }[]
