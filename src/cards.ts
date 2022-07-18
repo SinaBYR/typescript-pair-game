@@ -8,21 +8,20 @@ import { GameCards } from './types/index';
 import { gameCard } from './components/gameCard';
 
 const GAME_CARDS: GameCards = [
-  { no: '1', src: img1 },
-  { no: '2', src: img2 },
-  { no: '3', src: img3 },
-  { no: '4', src: img4 },
-  { no: '5', src: img5 },
-  { no: '6', src: img1 },
-  { no: '7', src: img2 },
-  { no: '8', src: img3 },
-  { no: '9', src: img4 },
-  { no: '10', src: img5 }
+  { tag: '1', src: img1 },
+  { tag: '2', src: img2 },
+  { tag: '3', src: img3 },
+  { tag: '4', src: img4 },
+  { tag: '5', src: img5 },
+  { tag: '1', src: img1 },
+  { tag: '2', src: img2 },
+  { tag: '3', src: img3 },
+  { tag: '4', src: img4 },
+  { tag: '5', src: img5 }
 ]
 
 const shuffledCards = GAME_CARDS.shuffle();
 
 export const cards = shuffledCards.map((cardInfo)  => {
-  // console.log(cardInfo.src)
   return gameCard(cardInfo);
 })

@@ -1,1 +1,1 @@
-export type GameCards = { no: string, src: any }[]
+export type GameCards = { tag: string, src: any }[]
