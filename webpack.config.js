@@ -4,12 +4,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   mode: 'development',
   entry: {
-    index: './src/index.ts',
     shuffle: './src/utils/shuffle.ts',
     cards: {
       import: './src/cards.ts',
       dependOn: 'shuffle'
     },
+    index: './src/index.ts',
   },
   output: {
     filename: '[name].bundle.js',
