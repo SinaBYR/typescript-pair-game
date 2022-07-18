@@ -2,6 +2,7 @@
   position: relative;
   width: 200px;
   height: 300px;
+  margin: 0 auto;
   transform-style: preserve-3d;
   transition: transform 500ms ease;
   perspective: 1000px;
