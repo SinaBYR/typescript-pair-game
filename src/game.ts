@@ -6,6 +6,7 @@ let storedCard: HTMLDivElement|null = null;
 // When user has selected two cards, it means the selecting phase MUST be paused. Otherwise, they're allowed to play.
 let pause = false;
 
+// This function is called from component/gameCard.ts file when each card is selected by user.
 function selectCard(card: HTMLDivElement) {
   if(!storedCard) {
     card.classList.add('clicked');
