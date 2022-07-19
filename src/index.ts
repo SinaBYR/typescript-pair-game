@@ -12,8 +12,12 @@ button.addEventListener('click', (e) => {
   button.addEventListener('transitionend', e => {
     button.classList.add('hidden');
   })
-})
 
-cards.forEach(card => {
-  main.appendChild(card)
+  main.classList.remove('hidden');
+  cards.forEach((card, index) => {
+    // Animation delay starts from 500ms, because removing hidden class from main tag takes a bit.
+    // To avoid interfering these two, it'll start from 500ms.
+    card.style.animationDelay = `${500 + index * 250}ms`;
+    main.appendChild(card);
+  })
 })
