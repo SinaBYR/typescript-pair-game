@@ -20,10 +20,10 @@ module.exports = {
     rules: [
       { test: /\.ts$/, use: 'ts-loader', include: [path.resolve(__dirname, 'src')] },
       { test: /\.css$/, use: ['style-loader', 'css-loader'] },
-      { test: /\.ttf$/, type: 'asset/resource', generator: { filename: 'assets/fonts/[name][ext]' } },
-      { test: /\.(png|svg|jpg|jpeg)$/i, type: 'asset/resource', generator: { filename: 'assets/img/[name][ext]' } },
+      { test: /\.ttf$/, type: 'asset/resource', generator: { filename: 'assets/fonts/[contenthash][ext]' } },
+      { test: /\.(png|svg|jpg|jpeg)$/i, type: 'asset/resource', generator: { filename: 'assets/img/[contenthash][ext]' } },
       { test: /\.html$/i, loader: 'html-loader', options: { minimize: true } },
-      { test: /\.wav$/, loader: 'file-loader' }
+      { test: /\.wav$/, loader: 'file-loader', options: { outputPath: 'assets/audio' } }
     ]
   },
   resolve: {
