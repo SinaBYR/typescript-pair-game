@@ -22,7 +22,8 @@ module.exports = {
       { test: /\.css$/, use: ['style-loader', 'css-loader'] },
       { test: /\.ttf$/, type: 'asset/resource', generator: { filename: 'assets/fonts/[name][ext]' } },
       { test: /\.(png|svg|jpg|jpeg)$/i, type: 'asset/resource', generator: { filename: 'assets/img/[name][ext]' } },
-      { test: /\.html$/i, loader: 'html-loader', options: { minimize: true } }
+      { test: /\.html$/i, loader: 'html-loader', options: { minimize: true } },
+      { test: /\.wav$/, loader: 'file-loader' }
     ]
   },
   resolve: {
