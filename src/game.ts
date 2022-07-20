@@ -1,7 +1,9 @@
 import VictorySoundEffect from './assets/audio/victory-sound-effect.wav';
+import ApplauseSoundEffect from './assets/audio/applause-sound-effect.wav';
 
 // The selected card is stored in "element" variable.
 let storedCard: HTMLDivElement|null = null;
+let pairedCount: number = 0;
 
 // The purpose of this variable is to block user from selecting card when they've already selected two cards.
 // It's used in gameCard component to check if a card can be selected or not.
@@ -23,8 +25,7 @@ function selectCard(card: HTMLDivElement) {
   const cardTag = card.getAttribute('data-card-tag');
 
   if(storedCardTag === cardTag) {
-    const victoryAudio = new Audio(VictorySoundEffect);
-    victoryAudio.play();
+    pairedCount++;
 
     card.classList.remove('landed');
     storedCard.classList.remove('landed');
@@ -37,6 +38,15 @@ function selectCard(card: HTMLDivElement) {
     // Second card guess was right, so the user is getting ready to start over.
     // Meaning, card selecting phase which was stopped earlier, is about to start.
     pause = false;
+
+    if(pairedCount === 5) {
+      const applauseAudio = new Audio(ApplauseSoundEffect);
+      applauseAudio.play();
+      return;
+    }
+
+    const victoryAudio = new Audio(VictorySoundEffect);
+    victoryAudio.play();
     return;
   }
 
