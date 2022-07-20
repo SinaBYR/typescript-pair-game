@@ -6,7 +6,7 @@
 }
 
 /* It's used for animating cards on landing onto the document. */
-.gameCard.landed {
+.gameCard.fade-in {
   animation: fade-in 500ms forwards;
   transform: translateX(150px);
   opacity: 0;
