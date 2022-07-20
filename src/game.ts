@@ -1,3 +1,5 @@
+import VictorySoundEffect from './assets/audio/victory-sound-effect.wav';
+
 // The selected card is stored in "element" variable.
 let storedCard: HTMLDivElement|null = null;
 
@@ -21,6 +23,9 @@ function selectCard(card: HTMLDivElement) {
   const cardTag = card.getAttribute('data-card-tag');
 
   if(storedCardTag === cardTag) {
+    const victoryAudio = new Audio(VictorySoundEffect);
+    victoryAudio.play();
+
     card.classList.remove('landed');
     storedCard.classList.remove('landed');
 
