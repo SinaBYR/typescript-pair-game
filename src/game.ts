@@ -21,6 +21,10 @@ function selectCard(card: HTMLDivElement) {
   const cardTag = card.getAttribute('data-card-tag');
 
   if(storedCardTag === cardTag) {
+    card.classList.remove('landed');
+    storedCard.classList.remove('landed');
+
+
     storedCard.classList.add('paired');
     card.classList.add('paired');
 

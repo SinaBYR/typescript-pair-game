@@ -13,6 +13,8 @@ export function gameCard({ tag, src }: Props) {
   const back = document.createElement('div');
 
   card.classList.add('gameCard');
+  // landed class takes care of landing animation of card.
+  card.classList.add('landed');
   wrapper.classList.add('wrapper');
   front.classList.add('front');
   back.classList.add('back');
