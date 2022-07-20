@@ -73,11 +73,66 @@ header.playing h1 {
 }
 
 main {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   width: 1200px;
   margin: 0 auto;
+  transition: all 500ms ease;
 }
+
+.ending {
+  position: absolute;
+  top: -16px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background: url('./assets/img/ballons.png') top no-repeat; */
+  padding: 0 1rem;
+  z-index: 1;
+  transition: opacity 1000ms ease 500ms;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #FAF4B7;
+  opacity: 0.9;
+  filter: blur(4px);
+  z-index: 2;
+}
+
+.ballons {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+  background: url('./assets/img/ballons.png') top no-repeat;
+  z-index: 3;
+}
+
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1rem;
+  text-shadow: 8px 8px #bb8888;
+  z-index: 3;
+}
+
+/* 
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+} */
 
 main > * {
   margin-bottom: 2rem;

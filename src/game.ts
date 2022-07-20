@@ -27,12 +27,20 @@ function selectCard(card: HTMLDivElement) {
   if(storedCardTag === cardTag) {
     pairedCount++;
 
-    card.classList.remove('landed');
-    storedCard.classList.remove('landed');
-
-
-    storedCard.classList.add('paired');
+    if(pairedCount === 5) {
+      const endingDiv = document.querySelector('[data-ending]')!;
+      endingDiv.classList.remove('hidden');
+      setTimeout(() => {
+        endingDiv.classList.remove('visuallyHidden');
+      }, 1000)
+    }
+    
+    card.classList.remove('fade-in');
+    storedCard.classList.remove('fade-in');
     card.classList.add('paired');
+    storedCard.classList.add('paired');
+    card.classList.remove('clicked');
+    storedCard.classList.remove('clicked');
 
     storedCard = null;
     // Second card guess was right, so the user is getting ready to start over.
