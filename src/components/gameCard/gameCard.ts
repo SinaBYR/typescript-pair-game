@@ -1,5 +1,5 @@
 import './gameCard.css';
-import { selectCard, pause } from '../game';
+import { selectCard, pause } from '../../app/game';
 
 type Props = {
   id: string;
