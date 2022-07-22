@@ -60,8 +60,8 @@ function selectCard(card: HTMLDivElement) {
           // a transition also happens there as well. Meaning, a transitionend listener will also be attached
           // to endingDiv there too. This leads to hidden classname get added to the endingDiv 5 lines before.
           // To fix this, I firstly check if endingDiv is being disappeared from the document, then add hidden classname.
-          endingDiv.classList.contains('visuallyHidden') && endingDiv.addEventListener('transitionend', () => {
-            endingDiv.classList.add('hidden');
+          endingDiv.addEventListener('transitionend', () => {
+            endingDiv.classList.contains('visuallyHidden') && endingDiv.classList.add('hidden');
           });
           const container = document.querySelector('[data-container]') as HTMLElement;
           container.innerHTML = '';
