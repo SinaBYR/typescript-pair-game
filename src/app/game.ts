@@ -1,5 +1,6 @@
-import VictorySoundEffect from './assets/audio/victory-sound-effect.wav';
-import ApplauseSoundEffect from './assets/audio/applause-sound-effect.wav';
+import VictorySoundEffect from '../assets/audio/victory-sound-effect.wav';
+import ApplauseSoundEffect from '../assets/audio/applause-sound-effect.wav';
+import { renderCards } from './cards';
 
 // The selected card is stored in "element" variable.
 let storedCard: HTMLDivElement|null = null;
@@ -35,11 +36,19 @@ function selectCard(card: HTMLDivElement) {
   if(storedCardTag === currentCardTag) {
     pairedCount++;
 
-    if(pairedCount === 5) {
+    if(pairedCount === 1) {
       const endingDiv = document.querySelector('[data-ending]')!;
       endingDiv.classList.remove('hidden');
       setTimeout(() => {
         endingDiv.classList.remove('visuallyHidden');
+        const playAgainButton = document.querySelector('[data-play-again-button]')!;
+        playAgainButton.addEventListener('click', () => {
+          endingDiv.classList.add('visuallyHidden');
+          endingDiv.addEventListener('transitionend', () => endingDiv.classList.add('hidden'));
+          const main = document.querySelector('main')!;
+          main.innerHTML = '';
+          import('./cards').then(module => module.renderCards(main));
+        });
       }, 1000)
     }
     
