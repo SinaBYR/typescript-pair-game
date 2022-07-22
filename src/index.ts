@@ -1,5 +1,4 @@
 import './styles.css';
-import { cards } from './cards';
 
 const button = document.querySelector('[data-play-button]')!;
 const main = document.querySelector('main')!;
@@ -14,10 +13,14 @@ button.addEventListener('click', (e) => {
   })
 
   main.classList.remove('hidden');
-  cards.forEach((card, index) => {
-    // Animation delay starts from 500ms, because removing hidden class from main tag takes a bit.
-    // To avoid interfering these two, it'll start from 500ms.
-    card.style.animationDelay = `${500 + index * 250}ms`;
-    main.appendChild(card);
+
+  import('./cards').then(module => {    
+    module.cards.forEach((card, index) => {
+      // Animation delay starts from 500ms, because removing hidden class from main tag takes a bit.
+      // To avoid interfering these two, it'll start from 500ms.
+      card.style.animationDelay = `${500 + index * 250}ms`;
+      main.appendChild(card);
+    })
   })
+
 })
