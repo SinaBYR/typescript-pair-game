@@ -6,6 +6,27 @@
 }
 
 /* CLASSES */
+
+.btn {
+  display: inline-block;
+  color: #FAF4B7;
+  background-color: #FF8C8C;
+  min-width: 200px;
+  font-family: HoneyBear;
+  font-size: 1.3rem;
+  padding: 0.5rem 0;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 6px 6px #bb8888;
+  cursor: pointer;
+  transition: opacity 500ms ease;
+}
+
+.btn:active {
+  box-shadow: 2px 2px #bb8888;
+  transform: translate(5px, 5px);
+}
+
 .hidden {
   display: none;
 }
@@ -13,6 +34,7 @@
 .visuallyHidden {
   opacity: 0;
 }
+
 /* CLASSES */
 
 body {
@@ -44,26 +66,6 @@ header h1 {
   transition: all 500ms ease;
 }
 
-header button {
-  display: inline-block;
-  color: #FAF4B7;
-  background-color: #FF8C8C;
-  min-width: 200px;
-  font-family: HoneyBear;
-  font-size: 1.5rem;
-  padding: 0.5rem 0;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 6px 6px #bb8888;
-  cursor: pointer;
-  transition: opacity 500ms ease;
-}
-
-header button:active {
-  box-shadow: 2px 2px #bb8888;
-  transform: translate(5px, 5px);
-}
-
 header.playing {
   margin-top: 0;
 }
@@ -87,7 +89,6 @@ main {
   left: 0;
   width: 100%;
   height: 100%;
-  /* background: url('./assets/img/ballons.png') top no-repeat; */
   padding: 0 1rem;
   z-index: 1;
   transition: opacity 1000ms ease 500ms;
@@ -116,7 +117,6 @@ main {
   z-index: 3;
 }
 
-
 .modal {
   position: absolute;
   top: 50%;
@@ -126,13 +126,6 @@ main {
   text-shadow: 8px 8px #bb8888;
   z-index: 3;
 }
-
-/* 
-@keyframes fade-out {
-  to {
-    opacity: 0;
-  }
-} */
 
 main > * {
   margin-bottom: 2rem;
@@ -145,7 +138,6 @@ footer {
   font-family: monospace;
   font-size: 1rem;
   line-height: 1.4;
-  /* border: 1px solid blue; */
   margin-top: auto;
   margin-bottom: 1rem;
 }
