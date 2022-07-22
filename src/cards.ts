@@ -8,16 +8,16 @@ import { GameCards } from './types/index';
 import { gameCard } from './components/gameCard';
 
 const GAME_CARDS: GameCards = [
-  { tag: '1', src: img1 },
-  { tag: '2', src: img2 },
-  { tag: '3', src: img3 },
-  { tag: '4', src: img4 },
-  { tag: '5', src: img5 },
-  { tag: '1', src: img1 },
-  { tag: '2', src: img2 },
-  { tag: '3', src: img3 },
-  { tag: '4', src: img4 },
-  { tag: '5', src: img5 }
+  { id: '1', tag: '1', src: img1 },
+  { id: '2', tag: '2', src: img2 },
+  { id: '3', tag: '3', src: img3 },
+  { id: '4', tag: '4', src: img4 },
+  { id: '5', tag: '5', src: img5 },
+  { id: '6', tag: '1', src: img1 },
+  { id: '7', tag: '2', src: img2 },
+  { id: '8', tag: '3', src: img3 },
+  { id: '9', tag: '4', src: img4 },
+  { id: '10', tag: '5', src: img5 }
 ]
 
 const shuffledCards = GAME_CARDS.shuffle();

@@ -2,11 +2,12 @@ import './gameCard.css';
 import { selectCard, pause } from '../game';
 
 type Props = {
+  id: string;
   tag: string;
   src: any;
 }
 
-export function gameCard({ tag, src }: Props) {
+export function gameCard({ id, tag, src }: Props) {
   const card = document.createElement('div');
   const wrapper = document.createElement('div');
   const front = document.createElement('div');
@@ -21,6 +22,7 @@ export function gameCard({ tag, src }: Props) {
 
   back.style.backgroundImage = `url(${src})`;
 
+  card.setAttribute('data-card-id', id);
   card.setAttribute('data-card-tag', tag);
 
   // To read more about "pause" variable, please refer to game.ts file.

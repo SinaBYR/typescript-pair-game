@@ -12,6 +12,14 @@ let pause = false;
 
 // This function is called from component/gameCard.ts file when each card is selected by user.
 function selectCard(card: HTMLDivElement) {
+  // This block of code checks if current card is the one stored in storedCard variable.
+  const storedCardId = storedCard?.getAttribute('data-card-id');
+  const currentCardId = card.getAttribute('data-card-id');
+
+  if(storedCardId === currentCardId) {
+    return;
+  }
+
   if(!storedCard) {
     card.classList.add('clicked');
     return storedCard = card;
@@ -22,9 +30,9 @@ function selectCard(card: HTMLDivElement) {
   pause = true;
 
   const storedCardTag = storedCard.getAttribute('data-card-tag');
-  const cardTag = card.getAttribute('data-card-tag');
+  const currentCardTag = card.getAttribute('data-card-tag');
 
-  if(storedCardTag === cardTag) {
+  if(storedCardTag === currentCardTag) {
     pairedCount++;
 
     if(pairedCount === 5) {
