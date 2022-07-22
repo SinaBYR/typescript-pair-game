@@ -5,10 +5,6 @@ module.exports = {
   mode: 'development',
   entry: {
     shuffle: './src/utils/shuffle.ts',
-    cards: {
-      import: './src/cards.ts',
-      dependOn: 'shuffle'
-    },
     index: './src/index.ts',
   },
   output: {
