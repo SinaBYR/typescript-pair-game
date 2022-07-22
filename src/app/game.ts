@@ -1,6 +1,5 @@
 import VictorySoundEffect from '../assets/audio/victory-sound-effect.wav';
 import ApplauseSoundEffect from '../assets/audio/applause-sound-effect.wav';
-import { renderCards } from './cards';
 
 // The selected card is stored in "element" variable.
 let storedCard: HTMLDivElement|null = null;
@@ -35,22 +34,6 @@ function selectCard(card: HTMLDivElement) {
 
   if(storedCardTag === currentCardTag) {
     pairedCount++;
-
-    if(pairedCount === 1) {
-      const endingDiv = document.querySelector('[data-ending]')!;
-      endingDiv.classList.remove('hidden');
-      setTimeout(() => {
-        endingDiv.classList.remove('visuallyHidden');
-        const playAgainButton = document.querySelector('[data-play-again-button]')!;
-        playAgainButton.addEventListener('click', () => {
-          endingDiv.classList.add('visuallyHidden');
-          endingDiv.addEventListener('transitionend', () => endingDiv.classList.add('hidden'));
-          const main = document.querySelector('main')!;
-          main.innerHTML = '';
-          import('./cards').then(module => module.renderCards(main));
-        });
-      }, 1000)
-    }
     
     card.classList.remove('fade-in');
     storedCard.classList.remove('fade-in');
@@ -65,8 +48,30 @@ function selectCard(card: HTMLDivElement) {
     pause = false;
 
     if(pairedCount === 5) {
+      const endingDiv = document.querySelector('[data-ending]')!;
+      endingDiv.classList.remove('hidden');
+      setTimeout(() => {
+        endingDiv.classList.remove('visuallyHidden');
+        const playAgainButton = document.querySelector('[data-play-again-button]')!;
+        playAgainButton.addEventListener('click', () => {
+          endingDiv.classList.add('visuallyHidden');
+
+          // As you can see, I'm removing visuallyHidden classname from endingDiv 5 lines before, which means
+          // a transition also happens there as well. Meaning, a transitionend listener will also be attached
+          // to endingDiv there too. This leads to hidden classname get added to the endingDiv 5 lines before.
+          // To fix this, I firstly check if endingDiv is being disappeared from the document, then add hidden classname.
+          endingDiv.classList.contains('visuallyHidden') && endingDiv.addEventListener('transitionend', () => {
+            endingDiv.classList.add('hidden');
+          });
+          const container = document.querySelector('[data-container]') as HTMLElement;
+          container.innerHTML = '';
+          import('./cards').then(module => module.renderCards(container));
+        });
+      }, 1000)
+
       const applauseAudio = new Audio(ApplauseSoundEffect);
       applauseAudio.play();
+      pairedCount = 0;
       return;
     }
 
@@ -77,7 +82,7 @@ function selectCard(card: HTMLDivElement) {
 
   card.classList.add('clicked');
 
-  const timeout = setTimeout(() => {
+  setTimeout(() => {
     card.classList.remove('clicked');
     storedCard?.classList.remove('clicked');
     storedCard = null;
