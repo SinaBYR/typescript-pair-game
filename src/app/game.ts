@@ -1,5 +1,6 @@
 import VictorySoundEffect from '../assets/audio/victory-sound-effect.wav';
 import ApplauseSoundEffect from '../assets/audio/applause-sound-effect.wav';
+import SelectionSoundEffect from '../assets/audio/selection-sound-effect.wav';
 
 // The selected card is stored in "element" variable.
 let storedCard: HTMLDivElement|null = null;
@@ -12,6 +13,9 @@ let pause = false;
 
 // This function is called from component/gameCard.ts file when each card is selected by user.
 function selectCard(card: HTMLDivElement) {
+  const selectionAudio = new Audio(SelectionSoundEffect);
+  selectionAudio.play();
+
   // This block of code checks if current card is the one stored in storedCard variable.
   const storedCardId = storedCard?.getAttribute('data-card-id');
   const currentCardId = card.getAttribute('data-card-id');
@@ -45,6 +49,9 @@ function selectCard(card: HTMLDivElement) {
     // Meaning, card selecting phase which was stopped earlier, is about to start.
     pause = false;
 
+    const victoryAudio = new Audio(VictorySoundEffect);
+    victoryAudio.play();
+
     if(pairedCount === 5) {
       const endingDiv = document.querySelector('[data-ending]')!;
       endingDiv.classList.remove('hidden');
@@ -67,14 +74,10 @@ function selectCard(card: HTMLDivElement) {
         });
       }, 1000)
 
-      const applauseAudio = new Audio(ApplauseSoundEffect);
-      applauseAudio.play();
       pairedCount = 0;
-      return;
+      const applauseAudio = new Audio(ApplauseSoundEffect);
+      applauseAudio.play();  
     }
-
-    const victoryAudio = new Audio(VictorySoundEffect);
-    victoryAudio.play();
     return;
   }
 
