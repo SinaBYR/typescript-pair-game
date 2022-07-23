@@ -35,8 +35,6 @@ function selectCard(card: HTMLDivElement) {
   if(storedCardTag === currentCardTag) {
     pairedCount++;
     
-    card.classList.remove('fade-in');
-    storedCard.classList.remove('fade-in');
     card.classList.add('paired');
     storedCard.classList.add('paired');
     card.classList.remove('clicked');

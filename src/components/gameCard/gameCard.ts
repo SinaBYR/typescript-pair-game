@@ -27,6 +27,7 @@ export function gameCard({ id, tag, src }: Props) {
 
   // To read more about "pause" variable, please refer to game.ts file.
   card.onclick = () => !pause && selectCard(card);
+  card.onanimationend = () => card.classList.remove('fade-in');
 
   wrapper.appendChild(front);
   wrapper.appendChild(back);
