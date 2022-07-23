@@ -3,6 +3,12 @@
   height: 300px;
   margin-right: auto;
   margin-left: auto;
+  transition: transform 500ms ease;
+  cursor: pointer;
+}
+
+.gameCard:hover .wrapper {
+  box-shadow: 0 0 6px #FA5757;
 }
 
 /* It's used for animating cards on landing onto the document. */
@@ -25,6 +31,8 @@
   /* !important is needed to overrule inline-style animation-delay which was added programmatically */
   animation-delay: 100ms !important;
   opacity: 1;
+  /* To stop user from selecting already paired cards */
+  pointer-events: none;
 }
 
 @keyframes paired {
@@ -41,11 +49,14 @@
 
 .gameCard.paired .wrapper {
   transform: rotateY(180deg);
-  pointer-events: none;
 }
 
 .gameCard.clicked .wrapper {
   transform: rotateY(180deg);
+}
+
+.gameCard:is(.clicked, .paired) .wrapper {
+  box-shadow: none;
 }
 
 .wrapper {
